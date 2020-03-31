@@ -1,0 +1,15 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+  double x = 123.4, y = 456.000, z = 17.8956;
+  cout << setprecision(6) << showpoint << x << endl;
+  cout << setprecision(6) << showpoint << y << endl;
+
+  cout << left << setw(8) << x << endl;
+  cout << right << setw(8) << y << endl;
+  cout << right << setw(8) << z << endl;
+  return 0;
+}
