@@ -1,0 +1,112 @@
+// This Program calculates the area of different shapes depending on the
+// user's selection. COP2000 - Module 3 Assignment , 9/25/2019, - Tyler Trice
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+  //  Possible variables needed for calculations
+  int choice;     // To hold a menu choice
+  float length;   // length of rectangle
+  float width;    // width of rectangle
+  float height;   // height of triangle
+  float base;     // base of triangle
+  float radius;   // radius of circle
+  double area;    // area of the shape
+
+  // Constants for menu choices
+  const float PI = 3.14159;
+  const int RECTANGLE_CHOICE = 1,
+            TRIANGLE_CHOICE = 2,
+            CIRCLE_CHOICE = 3,
+            QUIT_CHOICE = 4;
+  
+  // Display the menu and get a choice 
+  cout  << "Architect Area Calculator:\n"
+        << "**************************\n"
+        << "1.  Rectangle\n"
+        << "2.  Triangle\n"
+        << "3.  Circle\n"
+        << "4.  Quit\n\n"
+        << "Enter a menu item: (1-4) ";
+  
+  cin >> choice;
+
+  if (choice >= 1 && choice <= 4)
+  {
+    // Set the numeric output formatting
+  cout << fixed << showpoint << setprecision(2);
+
+    // Respond to the users menu selection
+    switch(choice)
+    {
+      case 1:
+        cout << "Please enter the length: ";
+        cin >> length;
+        cout << "please enter the width: ";
+        cin >> width;
+        if (length <= 0 || width <= 0)
+            {
+              float length;   // local variable for if statement
+              float width;    // local variable for if statement
+              cout << "Please enter a value above zero for the length and width.\n";
+              cout << "Please enter the length: ";
+              cin >> length;
+              cout << "please enter the width: ";
+              cin >> width;
+              area = length * width;
+            }
+        else
+          area = length * width;
+        cout << "Area = " << area << " sq/ft" << endl;
+        break;
+
+      case 2:
+        cout << "Please enter the height: ";
+        cin >> height;
+        cout << "please enter the base: ";
+        cin >> base;
+        if (height <= 0 || base <= 0)
+            {
+              float height;
+              float base;
+              cout << "Please enter a value above zero for the height and base.\n";
+              cout << "Please enter the height: ";
+              cin >> height;
+              cout << "please enter the base: ";
+              cin >> base;
+              area = (height * base) / 2;
+            }
+        else
+          area = (height * base) / 2;
+        cout << "Area = " << area << " sq/ft" << endl;
+        break;
+
+      case 3:
+        cout << "Please enter the radius: ";
+        cin >> radius;
+        if (radius <= 0)
+            {
+              float radius; // local variable for if statement
+              cout << "Please enter a value above zero for the radius.\n";
+              cout << "Please enter the radius: ";
+              cin >> radius;
+              area = PI * (radius * radius);
+            }
+        else
+          area = PI * (radius * radius);
+        cout << "Area = " << area << " sq/ft" << endl;
+        break;
+
+      case 4:
+        cout << "Thank you for using Architect Area Calculator....";
+        break;
+    }
+   
+  }
+  else
+      cout << "ERROR! Invalid input.\n"
+           << "Restart the program and enter a whole number from 1 to 4."; 
+  return 0;
+}
