@@ -1,0 +1,25 @@
+// this program demonstrates a range based for loop
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+      // Define an array of integers 
+      int numbers[] = { 10, 20, 30, 40, 50 };
+      string planets[] = { "Mercury", "Venus", "Earth", "Mars",
+                            "Jupiter", "Saturn", "Uranus",
+                            "Neptune", "Pluto" };
+
+      // Display the values in the array
+      for (int val : numbers)
+          cout << val << endl;
+      
+      cout << "Here are the planets:\n";
+
+      // Display the planets array
+      for (string planet : planets)
+          cout << planet << endl;
+
+      return 0;
+}
