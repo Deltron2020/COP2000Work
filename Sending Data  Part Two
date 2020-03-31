@@ -1,0 +1,25 @@
+// This program demonstrates a function with a parameter
+#include <iostream>
+using namespace std;
+
+// Function Prototype
+void displayValue(int);
+
+int main()
+{
+    cout << "I am passing several values to displayValue.\n";
+    displayValue(5);   
+    displayValue(15);  
+    displayValue(2);  
+    displayValue(100);  
+    displayValue(69);   
+    cout << "Now I am back in Main.\n";
+    return 0;
+}
+
+// Define displayValue
+
+void displayValue(int num)
+{
+    cout << "The value is " << num << endl;
+}
