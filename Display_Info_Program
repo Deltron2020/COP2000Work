@@ -1,0 +1,13 @@
+// Chapter 2 2.4 Activity Page 38
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  cout<< "Today's Date is 8/28\n";
+  cout << "Name: Tyler Trice\n";
+  cout << "Address: Your Momma's House\n";
+  cout << "Cntd: Sugartown, USA, SMD\n";
+  cout << "Number: 111-555-9898\n";
+  return 0;
+}
