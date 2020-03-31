@@ -1,0 +1,70 @@
+// This Program demonstrates some math functionality with Arrays
+// Summing values in an array, getting the average of values in an array and
+// finding the highest and lowest value in an array
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    // Summing values in an array
+    const int NUM_VALUES = 24;
+    int units[NUM_VALUES] = { 1, 2, 3, 4, 5, 6,
+                              7, 8, 9, 10, 11, 12,
+                              13, 14, 15, 16, 17, 18,
+                              19, 20, 21, 22, 23, 24 };
+
+    int total = 0;      // Accumulator variable to add values to
+    for (int count = 0; count < NUM_VALUES; count++)
+        total += units[count];
+    
+    // Display added total
+    cout << total << endl;
+
+    // Getting the average value in an array
+    const int NUM_SCORES = 10;
+    double average;
+    double scores[NUM_SCORES] = { 1, 2, 3, 4, 5, 6,
+                                  7, 8, 9, 10 };
+
+    int scoreTotal = 0;      // Accumulator variable to add values to
+    for (int count = 0; count < NUM_SCORES; count++)
+        scoreTotal += scores[count];
+
+    average = scoreTotal / NUM_SCORES;
+
+    // Display added total
+    cout << average << endl;
+
+    // Finding the Highest Value in an Array
+    const int SIZE = 25;
+    int numbers[SIZE] = { 1, 2, 3, 4, 5, 6,
+                              7, 8, 9, 10, 11, 12,
+                              13, 14, 15, 16, 0, 18,
+                              19, 20, 21, 22, 23, 24, 25 };
+
+    int count;
+    int highest;
+
+    highest = numbers[0];
+    for (count = 1; count < SIZE; count++)
+    {
+        if (numbers[count] > highest)
+            highest = numbers[count];
+    }
+
+    cout << highest << endl;
+
+// Finding the Lowest Value in an Array
+    int lowest;
+
+    lowest = numbers[0];
+    for (count = 1; count < SIZE; count++)
+    {
+        if (numbers[count] < lowest)
+            lowest = numbers[count];
+    }
+
+    cout << lowest << endl;
+
+return 0;
+}
