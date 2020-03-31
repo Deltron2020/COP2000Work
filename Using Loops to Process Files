@@ -1,0 +1,38 @@
+// this program reads data from a file
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+  ofstream outputFile;   // file stream object
+  int numberOfDays;      // number of sales days
+  double sales;          // sales amount for a day
+
+  // Get the number of days
+  cout << "Enter the number of sales days: ";
+  cin >> numberOfDays;
+
+  // open a file named sales.txt
+  outputFile.open("Sales.txt");
+
+  // get the sales for each day and write it
+  // to the file
+  for (int count = 1; count <= numberOfDays; count++)
+  {
+      // get the sales for the day
+      cout << "Enter the sales for day "
+           << count << ": ";
+      cin >> sales;
+
+      // Write the sales to the file
+      outputFile << sales << endl;
+
+  }
+
+  // close the file
+  outputFile.close();
+  cout << "Data written to sales.txt\n";
+  return 0;
+
+}
