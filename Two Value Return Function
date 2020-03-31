@@ -1,0 +1,48 @@
+// This program demonstrates two value returning functions
+// The square function is called in a mathmatical statement
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+// Function Prototypes
+double getRadius();
+double square(double);
+
+int main()
+{
+    const double PI = 3.14159;
+    double radius;
+    double area;
+
+    // Set the numeric output formatting
+    cout << fixed << showpoint << setprecision(2);
+
+    // Get the radius of the circle
+    cout << "This program calculates the area of a circle.\n";
+    radius = getRadius();
+
+    // Calculate the area of the circle
+    area = PI * square(radius);
+
+    // Display the Area
+    cout << "The area is " << area << endl;
+    return 0;
+}
+
+// Define the function getRadius
+
+double getRadius()
+{
+    double rad;
+
+    cout << "Enter the radius of the circle: ";
+    cin >> rad;
+    return rad;
+}
+
+// Define the function square
+
+double square(double number)
+{
+    return number * number;
+}
