@@ -1,0 +1,30 @@
+// This program has three functions: main, first, and second.
+#include <iostream>
+using namespace std;
+
+// Function Prototypes
+void first();
+void second();
+
+int main()
+{
+    cout << "I am starting in function main.\n";
+    first();
+    second();
+    cout << "Back in the function main again.\n";
+    return 0;
+}
+
+// Define funtion first
+
+void first()
+{
+    cout << "I am now inside function first.\n";
+}
+
+// Define function second
+
+void second()
+{
+    cout << "I am now inside the function second.\n";
+}
