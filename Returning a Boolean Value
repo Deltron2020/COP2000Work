@@ -1,0 +1,37 @@
+// this program uses a function that return true or false
+#include <iostream>
+using namespace std;
+
+// Function Prototype
+bool isEven(int);
+
+int main()
+{
+    int val;
+
+    // Get the number from the user
+    cout << "Enter an integer and I will tell you if it is odd or even: ";
+    cin >> val;
+
+    // Determine if it is odd or even 
+    if (isEven(val))
+        cout << val << " is even.\n";
+    else
+        cout << val << " is odd.\n";
+       
+    return 0;
+}
+
+// Define function isEven
+
+bool isEven(int number)
+{
+    bool status;
+
+    if (number % 2 == 0)
+        status = true;    // The number is even if there is no remainder
+    else
+        status = false;   // Otherwise, it is odd
+    return status; 
+}
+
