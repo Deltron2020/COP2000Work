@@ -1,0 +1,17 @@
+// this program displays float type variables
+// used for numbers with decimals
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  float distance;
+  float mass;
+
+  distance = 1.49596939E11;
+  mass = 4.56568687E30;
+
+  cout << "The sun is " << distance << "miles away.\n";
+  cout << "The sun's mass is " << mass << "kilograms.";
+  return 0;
+}
