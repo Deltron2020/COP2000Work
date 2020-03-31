@@ -1,0 +1,76 @@
+// This program calculates gross pay
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+// Global Constants
+const double PAY_RATE = 22.5;         // Houry pay rate
+const double BASE_HOURS = 40.0;       // Base weekly hours
+const double OT_MULTIPLIER = 1.5;     // Overtime mulitplier
+
+// Function Prototypes
+double getBasePay(double);
+double getOvertimePay(double);
+
+int main()
+{
+    double hours,
+           basepay,
+           overtime = 0.0,
+           totalPay;
+
+    // Get the number of hours worked
+    cout << "How many hours did you work this week?\n";
+    cin >> hours;
+
+    // Get the amount of basepay
+    basepay = getBasePay(hours);
+
+    // Get overtime pay, if any
+    if (hours > BASE_HOURS)
+        overtime = getOvertimePay(hours);
+    
+    // Calculate the total pay 
+    totalPay = basepay + overtime;
+
+    // Set up formatting
+    cout << fixed << showpoint << setprecision(2);
+
+    // Display the pay
+    cout << "Base Pay: $" << basepay << endl;
+    cout << "Overtime Pay: $" << overtime << endl;
+    cout << "Total Pay: $" << totalPay << endl;
+
+    return 0;
+}
+
+// Define the getBasePay function
+
+double getBasePay(double hoursWorked)
+{
+    double basePay;    
+
+    // Determine Base Pay
+    if (hoursWorked > BASE_HOURS)
+        basePay = BASE_HOURS * PAY_RATE;
+    else
+        basePay = hoursWorked * PAY_RATE;
+
+    return basePay;
+
+}
+
+// Define the getOvertimePay function
+
+double getOvertimePay (double hoursWorked)
+{
+    double overtimePay;
+
+    // Determine Overtime Pay
+    if (hoursWorked > BASE_HOURS)
+        overtimePay = (hoursWorked - BASE_HOURS) * PAY_RATE * OT_MULTIPLIER;
+    else 
+        overtimePay = 0.0;
+
+    return overtimePay;
+}
