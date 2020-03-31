@@ -1,0 +1,14 @@
+// this prgram displays the char data type
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  char letter;
+
+  letter = 65; // 'A'
+  cout << letter << endl;
+  letter = 66; // 'B'
+  cout << letter << endl;
+  return 0;
+}
