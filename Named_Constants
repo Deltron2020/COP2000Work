@@ -1,0 +1,24 @@
+/*
+this program displays a multi line comment and named constants which are just like 
+variables except they cannot be changed while the program is running
+*/
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  // Constants
+  const double PI = 3.14159;
+  const double DIAMETER = 10.0;
+
+  // Variable to hold Circumference
+  double circumference;
+
+  // Calculate the Circumference
+  circumference = PI * DIAMETER;
+
+  // Display the Circumference
+  cout << "The circumference is: " << circumference << endl;
+  return 0;
+}
