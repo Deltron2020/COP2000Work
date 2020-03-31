@@ -1,0 +1,21 @@
+// this program displays the numbers 1 thru 10 and their squares
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  // Constants
+  const int MIN_VALUE = 1,
+            MAX_VALUE = 10;
+
+  int number;
+
+  cout << "Number Squared\n";
+  cout << "-----------------------\n";
+
+  for (number = MIN_VALUE; number <= MAX_VALUE; number++)
+      cout << number << "\t\t" << (number * number) << endl;
+  
+  return 0;
+
+}
