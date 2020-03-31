@@ -1,0 +1,25 @@
+// This program demonstrates static local variables
+// A static local variable is a varible created inside a function that
+// you want to persist even after the function returns
+#include <iostream>
+using namespace std;
+
+void showStatic();
+
+int main()
+{
+    // Call the showStatic function 5 times
+    for (int count = 0; count < 5; count++)
+        showStatic();
+    return 0;
+}
+
+// Define the showStatic Function
+
+void showStatic()
+{
+    static int statNum;
+
+    cout << "statNum is " << statNum << endl;
+    statNum++;
+}
