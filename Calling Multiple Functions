@@ -1,0 +1,32 @@
+// This program has four functions: main, first, second, and third.
+#include <iostream>
+using namespace std;
+
+// Define the first function
+void first()
+{
+    cout << "I am now insdie the first function.\n";
+}
+
+// Define the second function
+void second()
+{
+    cout << "I am now inside the second function.\n";
+}
+
+// Define the third function
+void third()
+{
+    cout << "I am now inside the third function.\n";
+}
+
+// Define the main function
+int main()
+{
+    cout << "I am starting in the main function.\n";
+    first();
+    second();
+    third();
+    cout << "I am back to the main function.\n";
+    return 0;
+}
