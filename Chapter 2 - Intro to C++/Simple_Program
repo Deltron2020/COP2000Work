@@ -1,0 +1,12 @@
+// A simple C++ program
+#include <iostream> //  the header file, tells the program to include another file. The <>      // indicate it is a standard C++ file, iostream contains code that allows display output to the // screen and read input from the keyboard 
+
+using namespace std; // namespace organizes the names of program entities, in this case in     // namespace std, every name created by iostream file is part of namespace, 
+// iostream needs namespace std in order to be used
+
+int main() // marks the beginning of a function, int tells indicates the function sends 
+// an integer value back to the OS when it is finished executing, must have a main function
+{ // all statements that make up the function are enclosed in braces
+  cout <<"Programming is a ton of fun!'; // displays the entered text on screen 
+  return 0; // returns 0 when program is complete, tells the system the function executed       // successfully
+}

@@ -1,0 +1,35 @@
+// This Program Displays The Logo and Sale Prices for Gunters Mountain Shop - Tyler Trice,     // COP2000, 8/31/2019
+#include <iostream>
+using namespace std;
+
+
+int main()
+ {
+
+  // Define variables for sale items and initialize the values to the sale prices
+
+  int bootSalePrice = 59, pulloverSalePrice = 10, gaitersSalePrice = 12, cleatsSalePrice = 14;
+
+  // Output the logo
+
+  cout << "*****************************************\n";
+  cout << "**        //\\                          **\n";    
+  cout << "**       //  \\  //\\                    **\n";     
+  cout << "**      //    \\//  \\      //\\          **\n";
+  cout << "**     //           \\    //  \\         **\n";
+  cout << "**    //             \\  //    \\        **\n";
+  cout << "**   //               \\//      \\       **\n";
+  cout << "**  //                          \\      **\n";
+  cout << "*****************************************\n";
+  cout << "**  Welcome to Gunter's Mountain Shop  **\n";
+  cout << "*****************************************\n";
+  cout << endl;
+  // Output the sale items and the prices
+  cout << "Sale Items               Sale Price\n";
+  cout << "Hunter Climbing Boots    $" << bootSalePrice << endl;
+  cout << "Fleece Pullovers         $" << pulloverSalePrice << endl;
+  cout << "Snow Gaiters             $" << gaitersSalePrice << endl;
+  cout << "Traction Cleats          $" << cleatsSalePrice << endl;
+
+return 0;
+} 
