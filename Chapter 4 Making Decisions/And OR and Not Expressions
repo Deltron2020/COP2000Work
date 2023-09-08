@@ -1,0 +1,37 @@
+// This program demonstrates &&, ||, and !
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  // Constants for income and experience
+  const double MIN_INCOME = 35000;
+  const int MIN_YEARS = 5;
+  const int MIN_AGE = 25;
+
+  double income; // annual income entered
+  int years; // years at the job
+  int age; // persons age
+
+  // Get the annual income and years at the job and age
+  cout << "What is your annual salary?\n";
+  cin >> income;
+  cout << "How many years have you been employed there?\n";
+  cin >> years; 
+  cout << "How old are you?\n";
+  cin >> age;
+
+  // Determine if the user qualifies
+  if ((!(income < MIN_INCOME || years < MIN_YEARS)) && age > MIN_AGE)
+    cout << "You qualify.\n";
+  
+  else 
+  {
+    cout << "You must make at least $" << MIN_INCOME << " annually" << endl;
+    cout << "or have been employed more than " << MIN_YEARS << endl;
+    cout << "years, and must be at least " << MIN_AGE << " years old.\n";
+  }
+
+    return 0;
+
+}

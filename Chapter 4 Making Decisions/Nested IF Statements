@@ -1,0 +1,41 @@
+// This program demonstrates nested if statements
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  char employed,  // Currently Employed Y or N
+       recentgrad; // Recent Graudate Y or N
+
+  // If the user emplyed and a recent college grad?
+  cout << "Answer the following questions with Y for Yes \n";
+  cout << "and N for No.\n"; 
+
+  cout << "Are you currently employed?\n";
+  cin >> employed;
+  cout << "Have you graduated from college in the last two years?\n";
+  cin >> recentgrad;
+
+  // Determine if the user qualifies for the loan
+  if (employed == 'Y') 
+  {
+      if (recentgrad == 'Y')
+      {
+          cout << "You qualify for the special interest rate.";
+      }
+
+      else  // Not a recent grad
+      {
+          cout << "You must have graduated from college\n";
+          cout << "in the last two years to qualify."; 
+      }
+  }
+
+      else  // Not employed
+      {
+          cout << "You must be employed to qualify.\n";
+      }
+
+return 0;
+
+} 
