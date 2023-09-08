@@ -1,0 +1,177 @@
+// This program allows the user to practice and be tested on multiplication tables.
+// The user may enter an integer from 1 to 12 and the multiplication table will be
+// created, the user may then choose to see that table, another table, be tested, or quit.
+// Tyler Trice, COP2000, 11/19/2019 
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+// Function Prototypes
+void displayTable(int [10][3]);
+void createTables(int [10][3], int [10][3], int);
+bool testMe(int [10][3]);
+void gradeMe (int [10][3], int [10][3]);
+void displayMenu();
+
+int main()
+{
+
+    int userInput;
+    int menuChoice;
+    int testTable[10][3];
+    int ansTable[10][3];
+    bool passed;
+
+    cout << "What times table would you like to review?\n";
+    cout << "Please enter a value from 1 to 12 > ";
+    cin >> userInput;
+    while (userInput < 1 || userInput > 12)
+    {
+        cout << "Invalid input......\n";
+        cout << "Please enter a valid integer from 1 to 12.\n";
+        cin >> userInput; 
+    }
+
+    // Create the multiplication tables
+    createTables(testTable, ansTable, userInput);
+
+    do 
+    {
+      // Display the program menu
+      displayMenu();
+
+      cin >> menuChoice;
+      while (menuChoice < 1 || menuChoice > 4)
+      {
+          cout << "Invalid Menu Selection.\n";
+          cout << "Please select a choice from 1 to 4.\n";
+          cin >> menuChoice;
+      }
+
+      // Switch statements will go here
+      switch(menuChoice)
+      {
+          case 1: 
+          displayTable(testTable);
+          break;
+
+          case 2:
+          testMe(ansTable);
+          gradeMe(testTable, ansTable);
+          break;
+
+          case 3:
+            cout << "What times table would you like to review?\n";
+            cout << "Please enter a value from 1 to 12 > ";
+            cin >> userInput;
+            while (userInput < 1 || userInput > 12)
+            {
+                cout << "Invalid input......\n";
+                cout << "Please enter a valid integer from 1 to 12.\n";
+                cin >> userInput; 
+            }
+
+            // Create new multiplication tables
+            createTables(testTable, ansTable, userInput);
+            break;
+      }
+
+    } while (menuChoice != 4);
+
+  return 0;
+}
+
+
+// Define Function displayMenu
+void displayMenu()
+{
+  cout << "*****************************************************************\n";
+  cout << "\t\t\t\t Multiplication Tables\n";
+  cout << "\t\t Program Developed by: Tyler Trice\n\n";
+  cout << "\t\t\t 1. Review MyTable\n"
+       << "\t\t\t 2. Test Me\n"
+       << "\t\t\t 3. Enter a New Multiplication Table (1-12)\n"
+       << "\t\t\t 4. Quit\n\n";
+  cout << "Enter a Menu Item > ";
+}
+
+// Define Function createTables
+void createTables(int testArray[10][3], int answerArray[10][3], int userNum)
+{
+    for (int x = 0; x < 10; x++)
+    {
+      for (int y = 0; y < 3; y++)
+      {
+          testArray[x][0] = x + 1;
+          testArray[x][y] = userNum;
+          testArray[x][2] = testArray[x][0] * testArray[0][y];
+          answerArray[x][0] = x + 1;
+          answerArray[x][1] = userNum;
+      } 
+    }
+}
+
+// Define the displayTable Function
+void displayTable(int displayArray[10][3])
+{
+    for (int x = 0; x < 10; x++)
+    {
+        for (int y = 0; y < 3; y++)
+        {
+            cout << setw(3) << displayArray[x][y];
+            if (y < 1)
+              cout << "  x ";
+            else if (y < 3 && y != 2)
+              cout << "  = ";
+        }
+        cout << endl;
+    }
+}
+
+// Define Function testMe
+bool testMe(int answerArray[10][3])
+{
+    for (int x = 0; x < 10; x++)
+    {
+      cout << "What does ";
+        for (int y = 0; y < 2; y++)
+        {
+            cout << setw(3) << answerArray[x][y];
+            if (y < 1)
+              cout << "  x ";
+            else if (y < 3 && y != 2)
+              cout << "  equal? ";
+        }
+        cin >> answerArray[x][2];
+        while (answerArray[x][2] == 0)
+        {
+          cout << "Invalid Answer, Please Try Again";
+          cin >> answerArray[x][2];
+        }
+        cout << endl;
+    }
+    return true;
+}
+
+// Define Function gradeMe
+void gradeMe(int testArray[10][3], int answerArray[10][3])
+{ 
+    double testGrade = 0.0;
+    double PASS = 70.0;
+   
+    for (int x = 0; x < 10; x++)
+    {
+        if (answerArray[x][2] == testArray[x][2])
+        {
+          testGrade += 10.0;
+        }
+    }
+
+    cout << fixed << showpoint << setprecision(2);
+    if (testGrade == 100.0)
+      cout << "You did an excellent job!! PERFECT SCORE!!\n";
+    else if (testGrade >= PASS)
+      cout << "You did a good job! You have a passing score of " << testGrade << "%\n";
+    else 
+      cout << "I'm sorry, you did not pass the exam. Your score was " << testGrade << "%\n";
+}

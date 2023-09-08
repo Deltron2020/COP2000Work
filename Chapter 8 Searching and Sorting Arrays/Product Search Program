@@ -1,0 +1,121 @@
+// Dingo Leadership Center product lookup program
+// This program allows the user to enter a product number
+// and then display the title, description, and price of the product
+#include <iostream>
+#include <string>
+using namespace std;
+
+const int NUM_PRODS = 9;                // The number of products produced
+const int MIN_PRODNUM = 914;            // The minimum product number
+const int MAX_PRODNUM = 922;            // the maximum product number
+
+// Function Prototypes
+int getProdNum();           
+int binarySearch(const int [], int, int);
+void displayProd(const string [], const string [], const double [], int);
+
+int main()
+{
+    // Array of Product ID's
+    int id[NUM_PRODS] = {914, 915, 916, 917, 918, 919, 920,
+                         921, 922};
+    
+    // Array of Product Titles
+    string title[NUM_PRODS] = {"Six Steps to Leadership",
+                               "Six Steps to Leadership",
+                               "The Road to Excellence",
+                               "Seven Lessons of Quality",
+                               "Seven Lessons of Quality",
+                               "Seven Lessons of Quality",
+                               "Teams are Made, Not Born",
+                               "Leadership for the Future",
+                               "Leadership for the Future", };
+    
+    // Array of Product Descriptions
+    string description[NUM_PRODS] = {"Book", "Audio CD", "DVD",
+                                     "Book", "Audio CD", "DVD",
+                                     "Book", "Book", "Audio CD"};
+
+    // Array of Product Prices
+    double prices[NUM_PRODS] = {12.95, 14.95, 18.95, 16.95, 21.95, 
+                                31.95, 14.95, 14.95, 16.95};
+
+    int prodNum;      // To hold product number
+    int index;        // To hold search results
+    char again;       // To hold Y or N answer
+
+    do 
+    {
+        // Get the desired product number
+        prodNum = getProdNum();
+
+        // Search for the product number
+        index = binarySearch(id, NUM_PRODS, prodNum);
+
+        // Display the results of the search
+        if (index == -1)
+            cout << "That product number was not found.\n";
+        else
+            displayProd(title, description, prices, index);
+
+        // Does the user want to do this again?
+        cout << "Would you like to look up another product? (Y/N) ";
+        cin >> again;
+
+    }   while (again == 'y' || again == 'Y');
+    return 0;
+}
+
+// Define the getProdNum function
+
+int getProdNum()
+{
+    int prodNum;    
+
+    cout << "Enter the item's product number: ";
+    cin >> prodNum;
+
+    // Validate input
+    while (prodNum < MIN_PRODNUM || prodNum > MAX_PRODNUM)
+    {
+        cout << "Enter a number in the range of " << MIN_PRODNUM  
+             << " through " << MAX_PRODNUM << ".\n";
+        cin >> prodNum;
+    }
+    return prodNum;
+}
+
+// Define the binarySearch function
+
+int binarySearch(const int array[], int numElems, int value)
+{
+    int first = 0,
+        last = numElems - 1,
+        middle,
+        position = -1;
+        bool found = false;
+
+    while (!found && first <= last)
+    {
+        middle = (first + last) / 2;
+        if (array[middle] == value)
+        {
+            found = true;
+            position = middle;
+        }
+        else if (array[middle] > value)
+            last = middle - 1;
+        else
+            first = middle + 1;
+    }
+    return position;
+}
+
+// Define the displayProd function
+
+void displayProd(const string title[], const string desc[], const double price[], int index)
+{
+  cout << "Title: " << title[index] << endl;
+  cout << "Description: " << desc[index] << endl;
+  cout << "Price: $" << price[index] << endl; 
+}
