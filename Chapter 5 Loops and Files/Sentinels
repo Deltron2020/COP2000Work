@@ -1,0 +1,27 @@
+// this program demonstrates a sentinel - a special value
+// that marks the end of a list of values
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int game = 1.0,   // game counter
+      points,       // points counter
+      total = 0;    // accumulator
+
+  cout << "Enter the number of points your team has earned \n"
+       << "so far this season, then enter -1 when finished.\n\n";
+  cin >> points;
+
+  while (points != -1)
+  {
+    total += points;
+    game++;
+    cout << "Enter the points for game " << game << ": ";
+    cin >> points;
+  }
+
+  cout << "\nThe total points are " << total << endl;
+  return 0;
+
+}

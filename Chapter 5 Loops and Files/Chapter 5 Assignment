@@ -1,0 +1,110 @@
+// Module 4 HW Assignment
+// This program will show the membership fees for Ronda's Gym and allow
+// the user to enter input to select their membership level
+// the program will then output that membership levels rates for the next 10 years
+// Tyler Trice, 10/13/2019, COP2000
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    // Declare Constants for Menu Choices
+    const int GOLD_CHOICE = 1,
+              SILVER_CHOICE = 2,
+              BRONZE_CHOICE = 3,
+              QUIT_CHOICE = 4;
+    
+    // Declare Constants for Gym Fee and Rates
+    const double YEARLY_GYM_FEE = 1200.00,
+                 GOLD_RATE = 1.01,
+                 SILVER_RATE = 1.02,
+                 BRONZE_RATE = 1.04;
+
+    // Declare Variable for Menu Choice and Math
+    int choice;
+    double rateAdded;
+    double totalAmount = YEARLY_GYM_FEE;
+
+    // Set up numeric output formatting
+    cout << fixed << showpoint << setprecision(2);
+
+
+    do
+    {
+      // Display the Menu
+      cout << "\t\tWelcome to Ronda's Strikeforce Gym!!\n"
+           << "x-----------------------------------------------x\n"
+           << "\t\t Membership Fee Calculator \n"
+           << "1.   Gold\n"
+           << "2.   Silver\n"
+           << "3.   Bronze\n"
+           << "4.   Quit\n\n";
+      cout << "Please enter your membership level (1-3, or Enter 4 to Quit) > ";
+      cin >> choice;
+
+      // Validate the Menu Choice
+      if (choice < GOLD_CHOICE || choice > QUIT_CHOICE)
+      {
+          cout << "Invalid menu selection......\n";
+          cout << "Please enter a valid menu option (1-4)\n";
+          cin >> choice;
+      }
+
+      // Process the User Input
+      switch(choice)
+      {
+          case GOLD_CHOICE:
+            for (int year = 1; year <= 10; year++)
+            {
+          
+              if (year == 1)
+              cout << "\nYear\t " << year << "\t\t$" << YEARLY_GYM_FEE << endl;
+              else
+              cout << "Year\t " << year << "\t\t$" << totalAmount << endl;
+              rateAdded = totalAmount * GOLD_RATE;
+              totalAmount = rateAdded;
+
+            }
+            totalAmount = YEARLY_GYM_FEE;
+          break;
+
+          case SILVER_CHOICE:
+            for (int year = 1; year <= 10; year++)
+            {
+          
+              if (year == 1)
+              cout << "\nYear\t " << year << "\t\t$" << YEARLY_GYM_FEE << endl;
+              else
+              cout << "Year\t " << year << "\t\t$" << totalAmount << endl;
+              rateAdded = totalAmount * SILVER_RATE;
+              totalAmount = rateAdded;         
+
+            }
+            totalAmount = YEARLY_GYM_FEE;
+          break;
+
+          case BRONZE_CHOICE:
+            for (int year = 1; year <= 10; year++)
+            {
+          
+              if (year == 1)
+              cout << "\nYear\t " << year << "\t\t$" << YEARLY_GYM_FEE << endl;
+              else
+              cout << "Year\t " << year << "\t\t$" << totalAmount << endl;
+              rateAdded = totalAmount * BRONZE_RATE;
+              totalAmount = rateAdded;
+
+            }
+            totalAmount = YEARLY_GYM_FEE;
+          break;
+
+      }
+
+
+    } while (choice != QUIT_CHOICE);
+
+  cout << "Thank you for using Ronda's Fee Calculator!\n";
+return 0;
+}

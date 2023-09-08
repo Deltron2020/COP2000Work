@@ -1,0 +1,23 @@
+// this program displays a list of numbers and their squares
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  const int MIN_NUMBER = 1,  // starting number to square
+            MAX_NUMBER = 10; // max number to square
+  
+  int number = MIN_NUMBER; // counter
+
+  cout << "number squared\n";
+  cout << "-------------------------------\n";
+
+  while (number <= MAX_NUMBER)
+  {
+    cout << number << "\t\t" << (number * number) << endl;
+    number++; // add to the counter 
+  }
+
+  return 0;
+
+}

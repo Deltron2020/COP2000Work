@@ -1,0 +1,24 @@
+// this program demonstrates a user controlled for loop
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int minNumber, // starting # to square - user input
+      maxNumber; // maximum # to square - user input
+  
+  // Get the min and max values to display
+  cout << "Enter the first number to square: \n";
+  cin >> minNumber; 
+  cout << "Enter the last number to square: \n";
+  cin >> maxNumber;
+
+  // Display the table of numbers
+  cout << "Number Squared\n";
+  cout << "------------------\n";
+
+  for (int num = minNumber; num <= maxNumber; num++)
+      cout << num << "\t\t" << (num * num) << endl;
+
+  return 0;
+}

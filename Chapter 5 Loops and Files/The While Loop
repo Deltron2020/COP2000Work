@@ -1,0 +1,16 @@
+// this demostrates a simple while loop
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int main = 0;
+
+  while (main < 5)
+    {
+      cout << "Hello\n";
+      main++;
+    }
+    cout << "That's All!\n";
+    return 0;
+}
