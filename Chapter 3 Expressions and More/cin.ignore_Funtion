@@ -1,0 +1,18 @@
+// this program uses both cin >> and cin.get() for keyboard input
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  char ch;
+  int number;
+
+  cout << "Enter a number: ";
+  cin >> number;
+  cin.ignore();        // skips the newline character
+  cout << "Enter a character: ";
+  cin.get();
+  cout << "Thank You!";
+  return 0;
+
+}

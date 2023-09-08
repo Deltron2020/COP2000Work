@@ -1,0 +1,25 @@
+// this program displays three rows of numbers.
+#include <iostream>
+#include <iomanip> // Required for setw
+using namespace std;
+
+int main()
+{
+  int num1 = 565, num2 = 1121, num3 = 1594,
+      num4 = 45, num5 = 223, num6 = 349,
+      num7 = 1992, num8 = 69, num9 = 712;
+
+  // display the first row of numbers
+  cout << setw(6) << num1 << setw(6) << num2 
+  << setw(6) << num3 << endl;
+
+  // display the second row of numbers
+  cout << setw(6) << num4 << setw(6) << num5 
+  << setw(6) << num6 << endl;
+
+  // display the third row of numbers
+  cout << setw(6) << num7 << setw(6) << num8 
+  << setw(6) << num9 << endl;
+  return 0;
+  
+}

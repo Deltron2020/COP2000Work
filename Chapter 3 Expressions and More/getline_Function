@@ -1,0 +1,22 @@
+// this program demonstrates the getline function
+// to read char data into  string object
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main ()
+{
+  string name;
+  string city;
+
+  cout << "Please enter your name: ";
+  getline(cin, name);
+  cout << "Please enter your city: ";
+  getline(cin, city);
+
+  cout << "Hello, " << name << endl;
+  cout << "You line in " << city << endl;
+  return 0;
+  
+}

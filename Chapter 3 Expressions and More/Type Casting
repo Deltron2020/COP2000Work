@@ -1,0 +1,19 @@
+// this program uses type cast to avoid integer division
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int books; // # of books to read
+  int months; // # of months spent reading
+  double perMonth; // Average number of books per months
+  cout << "How many books do you plan to read?\n";
+  cin >> books;
+  cout << "How many months will it take to read them?\n";
+  cin >> months;
+
+  perMonth = static_cast<double>(books) / months;
+
+  cout << "That is " << perMonth << " books per month.\n";
+  return 0;
+}

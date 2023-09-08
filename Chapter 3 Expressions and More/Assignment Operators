@@ -1,0 +1,48 @@
+// this program tracks the inventory of three stores that
+// opened at the same time. Each store started with the same
+// number of guns in inventory. By Subtracting the number of guns 
+// each store has sold from it's inventory, the current inventory
+// can be calculated
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int begInv, // beginning inventory for all stores
+      sold, // number of guns sold
+      store1, // store 1 inventory
+      store2, // store 2 inventory
+      store3; // store 3 inventory
+
+  // Get the beginning inventory for all stores
+  cout << "One week ago, 3 new gun shops opened\n";
+  cout << "at the same time with the same beginning inventory.\n";
+  cout << "What was the beginning inventory? \n";
+  cin >> begInv;
+
+  // Set each stores inventory
+  store1 = store2 = store3 = begInv;
+
+  // Get the number of guns sold at store1
+  cout << "How many guns has store 1 sold? \n";
+  cin >> sold;
+  store1 -= sold; // adjust store 1 inventory
+  
+  // Get the number of guns sold at store2
+  cout << "How many guns has store 2 sold? \n";
+  cin >> sold;
+  store2 -= sold; // adjust store 2 inventory
+
+  // Get the number of guns sold at store3
+  cout << "How many guns has store 3 sold? \n";
+  cin >> sold;
+  store3 -= sold; // adjust store 3 inventory
+
+  // display each store's inventory
+  cout << "The current inventory of each store is:\n";
+  cout << "Store 1: " << store1 << endl;
+  cout << "Store 2: " << store2 << endl;
+  cout << "Store 3: " << store3 << endl;
+  return 0;
+}
