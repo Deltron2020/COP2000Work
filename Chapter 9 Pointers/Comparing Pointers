@@ -1,0 +1,35 @@
+// the capability of comparing addresses gives you another way to be sure a pointer
+// does not go beyond the boundaries of an array 
+// This program uses a pointer to display contents of an array using comparison
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  const int SIZE = 5;
+  int numbers[SIZE] = {2, 4, 6, 8, 10};
+  int* ptr = numbers;     // make ptr point to numbers
+
+  // Display the numbers in the array
+  cout << "The numbers are:\n";
+  cout << *ptr << " ";    // Display the first element
+  while (ptr < &numbers[SIZE - 1])
+  {
+      // Advance ptr to point to the next element
+      ptr++;
+      // Display the value pointed to by ptr
+      cout << *ptr << " ";
+  }
+
+  // Display the numbers in reverse order
+  cout << "\nThe numbers backwards are:\n";
+  cout << *ptr << " ";    // Display the first element
+  while(ptr > numbers)
+  {
+      // Move backwards to previous element
+      ptr--;
+      // Display the value pointed to by ptr
+      cout << *ptr << " ";
+  }
+  return 0;
+}

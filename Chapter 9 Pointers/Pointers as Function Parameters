@@ -1,0 +1,37 @@
+// in C, the only way to pass a variable by reference is to use a pointer
+// This program uses two functions that accept addresses of variables as arguments
+#include <iostream>
+using namespace std;
+
+// Function Prototypes
+void getNumber(int *);
+void doubleValue(int *);
+
+int main()
+{
+    int number;
+
+    // Call getNumber and pass the address of number
+    getNumber(&number);
+
+    // Call doubleValue and pass the address of number
+    doubleValue(&number);
+
+    // Display the value in number
+    cout << "That value doubled is " << number << endl;
+    return 0;
+}
+
+// Define function getNumber
+void getNumber(int* input)
+{
+    cout << "Enter an integer number: ";
+    cin >> *input;    // The * causes the value entered by the user to be stored, not in input,
+                      // but in the variable pointed to by input
+}
+
+// Define the function doubleValue
+void doubleValue(int* val)
+{
+    *val *= 2;
+}

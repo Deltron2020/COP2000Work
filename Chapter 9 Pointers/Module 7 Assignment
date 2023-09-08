@@ -1,0 +1,242 @@
+// This program inputs data from two text files into two arrays, sorts the data, and 
+// creates and outputs two new text files with the newly sorted data. 
+// The program displays a menu for the user to see which toys are in stock, allowing the
+// user to select stuffed, plastic, or exit the program. After selecting
+// the material the user is asked to enter a toy name, the program will tell the user
+// if the toy is made and how many are in stock. This data is read from the newly made 
+// sorted text files. The program repeats until the user exits the program with the menu.  
+// Tyler Trice COP2000 12/3/2019
+
+// A. Declare Necessary Variables and 2D array to store data from input file. 
+// B. Call the readFile function and capture the returned value. 
+// C. Test if file was successfully read if so continue with program else exit with error message. 
+// D. Call the sortInput function 
+// E. Do while…. 
+//  a. call showMenu function 
+//  b. readin user input 
+//  c. validate user input and loop if invalid input entered 
+//  d. use switch statement or if statements to check user input 
+//      i. if user input equals 1 or 2 then call the ckInventory function 
+//     ii. if user input equals 3 then allow program to exit 
+
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+// Function Prototypes
+bool readFile(string [10][3], int [10][2]);
+void showMenu(string [10][3]);
+void sortInput(string [10][3], int [10][2]);
+void ckInventory(string [10][3], int [10][2], int);
+
+int main()
+{
+  string in_Data1[10][3];
+  int in_Data2[10][2];
+  int choice;
+  int toyType;
+  
+  const int STUFFED_TOY = 1;
+  const int PLASTIC_TOY = 2;
+  const int QUIT_MENU = 3;
+
+  readFile(in_Data1, in_Data2);
+
+  sortInput(in_Data1, in_Data2);
+
+  do
+  {
+    showMenu(in_Data1);
+    cin >> choice;
+    while (choice < STUFFED_TOY || choice > QUIT_MENU)
+      {
+          cout << "Invalid Menu Selection.\n";
+          cout << "Please select a choice from 1 to 3.\n";
+          cin >> choice;
+      }
+
+    switch(choice) 
+    {
+        case STUFFED_TOY:
+        toyType = STUFFED_TOY;
+        ckInventory(in_Data1, in_Data2, STUFFED_TOY);
+        break;
+
+        case PLASTIC_TOY:
+        toyType = PLASTIC_TOY;
+        ckInventory(in_Data1, in_Data2, PLASTIC_TOY);
+        break;
+
+    }
+  } while (choice != QUIT_MENU);
+
+    
+  return 0;
+}
+
+// Define the readFile Function
+bool readFile(string inventory[10][3], int inventory2[10][2])
+{
+  ifstream inventoryFile1;
+  ifstream inventoryFile2;                       
+  inventoryFile1.open("inventoryData.txt");      // open the File
+  inventoryFile2.open("inventoryData2.txt");     // open the second file
+  cout << "Reading data from file...\n";
+
+  // Check for Error
+  if (inventoryFile1.fail() || inventoryFile2.fail())
+  {
+      cerr << "Error Reading File\n" << endl;
+      exit(1);
+      return false;
+  } else 
+      cout << "File read successfully.....\n";
+
+  // Fill the inData1 array with data from first text file
+  for (int row = 0; row < 10; row++)
+  {
+      for (int col = 0; col < 3; col++)
+      {
+          inventoryFile1 >> inventory[row][col];
+      }
+  }
+
+  // Fill the inData2 array with data from second text file
+  for (int row = 0; row < 10; row++)
+  {
+      for (int col = 0; col < 2; col++)
+      {
+          inventoryFile2 >> inventory2[row][col];
+      }
+  }
+
+  // Close the files
+  inventoryFile1.close();
+  inventoryFile2.close();
+
+  return true;
+  //////////////////////////////////////////////////////////////////////////////////
+}
+
+// Define the sortInput Function
+void sortInput(string inventory[10][3], int inventory2[10][2])
+{
+  ofstream inventoryFile1;
+  ofstream inventoryFile2;
+
+  int minIndex;
+  string minValue;
+
+  for (int start = 0; start < 10; start++)
+  {
+    minIndex = start;
+    minValue = inventory[start][0];
+    for (int index = start + 1; index < 10; index++)
+    {
+        if (inventory[index][0] < minValue)
+        {
+            minValue = inventory[index][0];
+            minIndex = index;
+        }
+    }
+      swap(inventory[minIndex], inventory[start]);
+      swap(inventory2[minIndex], inventory2[start]);
+  }
+
+  inventoryFile1.open("newInventory.txt");
+  inventoryFile2.open("newInventory2.txt");
+
+  for (int row = 0; row < 10; row++)
+  {
+    inventoryFile1 << inventory[row][0] << "\t" 
+                   << inventory[row][1] << "\t"
+                   << inventory[row][2] << endl;
+  }
+
+  for (int row = 0; row < 10; row++)
+  {
+    inventoryFile2 << inventory2[row][0] << "\t"
+                   << inventory2[row][1] << endl;
+  }
+
+  inventoryFile1.close();
+  inventoryFile2.close();
+  ///////////////////////////////////////////////////////////////////////////////
+}
+
+// Define the showMenu Function
+void showMenu(string inventory[10][3])
+{
+  cout << "******************************\n"
+       << "*    Welcome to Tekka Toys   *\n"
+       << "*    Please follow the menu  *\n"
+       << "*    Below to check our      *\n"
+       << "*      Inventory...          *\n"
+       << "******************************\n\n";
+
+  cout << "We have the following toys:\n";
+  for (int row = 0; row < 10; row++)
+      cout << inventory[row][0] << ", ";
+
+  cout << endl << endl;
+  cout << "Please check our inventory if you are interested....\n"
+       << "1.     Plastic Toy\n"
+       << "2.     Stuffed Toy\n"
+       << "3.     Exit Program\n";
+
+///////////////////////////////////////////////////////////////////////////////////////
+}
+
+// Define the ckInventory Function
+void ckInventory(string inventory[10][3], int inventory2[10][2], int type)
+{
+  string toySearch;
+  string material;
+  int results;
+  if (type == 1)
+    material = "plastic ";
+  else
+    material = "stuffed ";
+
+  cout << "Which toy would you like to check the quantity?\n"
+       << "Please type name in all lower case letters > ";
+  cin >> toySearch;
+  cout << endl;
+
+  int index = 0;            // Used as a subscript to search array
+  int position = -1;        // To record position of search value
+  bool found = false;       // Flag to indicate if the value was found
+
+    while (index < 10 && !found)
+    {
+      if (inventory[index][0] == toySearch)   // If the value was found
+      { 
+          found = true;         // set the flag
+          position = index;     // Record the value's subscript
+          if (found && inventory[index][type] == "yes")
+          {
+              cout << "The toy you seek is a " << material << toySearch << "...\n";
+              cout << "We have those in stock\n";
+              cout << "We have " << inventory2[index][type - 1] << " in stock.\n";
+          } 
+          else if (found && inventory[index][type] == "no")
+          {
+              cout << "The toy you seek is a " << material << toySearch << "...\n";
+              cout << "We are sorry we do not have any of those "
+                   << "toys that are " << material << " \n";
+          } 
+      } 
+      
+      index++;                  // Go to the next element 
+    }
+    if (index == 10 && !found)
+    {
+          cout << "We are sorry, the toy name you entered is not in our inventory." 
+               << " Please try again....\n";
+    }
+
+      
+}
+

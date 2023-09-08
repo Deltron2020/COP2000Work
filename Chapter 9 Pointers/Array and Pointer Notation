@@ -1,0 +1,45 @@
+// This program processes an array using pointer notation
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    const int SIZE = 5;     // Size of the array
+    int numbers[SIZE];      // array of ints
+    int count;              // counter variable
+    int* ptr = nullptr;  // pointer var
+
+    // Get the values to store in the array
+    // Use pointer notation instead of subscripts
+    cout << "Enter " << SIZE << " numbers: ";
+    for (count = 0; count < SIZE; count++)
+        cin >> *(numbers + count);
+
+    // Display the values in the array using pointer notation
+    cout << "Here are the values in the array using pointer notation:\n";
+    for (count = 0; count < SIZE; count++)
+        cout << *(numbers + count) << " ";
+
+    cout << endl;
+
+    // Display the values in the array again using subscripts
+    cout << "Here are the values in the array using subscripts:\n";
+    for (count = 0; count < SIZE; count++)
+        cout << numbers[count] << " ";
+
+    cout << endl;
+
+    // Display the values in the array again using array address
+    cout << "Here are the values in the array using the array address:\n";
+    for (count = 0; count < SIZE; count++)
+        {
+          // Get the address of the array element
+          ptr = &numbers[count];
+
+          // Display the contents of the element
+          cout << *ptr << " ";
+        }
+
+    cout << endl;
+    return 0;
+}
