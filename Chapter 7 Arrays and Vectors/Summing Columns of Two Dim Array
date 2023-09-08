@@ -1,0 +1,32 @@
+// this program demonstrates summing the columns of a two dimensional array
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  const int NUM_STUDENTS = 3; 
+  const int NUM_SCORES = 5;
+  double total;
+  double average;
+  double scores[NUM_STUDENTS][NUM_SCORES] = {{77, 86, 85, 91, 79},
+                                            {87, 75, 82, 90, 99},
+                                            {70, 81, 88, 94, 97}};
+
+  // Get students average test score
+  for (int col = 0; col < NUM_SCORES; col++)
+  {
+      // set the accumulator
+      total = 0;
+
+      // Sum a column
+      for (int row = 0; row < NUM_STUDENTS; row++)
+          total += scores[row][col];
+
+      // Get the average
+      average = total / NUM_STUDENTS;
+
+      // Display the average
+      cout << "Score average for student " << (col + 1) 
+          << " is " << average << endl;
+  }
+}

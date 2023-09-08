@@ -1,0 +1,28 @@
+// This program compares the values in each arrays elements
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    const int SIZE = 5;
+    int firstArray[SIZE] = {5, 6, 7, 8, 9 };
+    int secondArray[SIZE] = {5, 6, 7, 8, 9 };
+    bool arraysEqual = true;                    // Flag Variable
+    int count = 0;                              // Loop Counter Variable
+
+    // Determine whether the elements contain the same data
+    while (arraysEqual && count < SIZE)
+    {
+        if (firstArray[count] != secondArray[count])
+            arraysEqual = false;
+        count++;
+    }
+
+    if (arraysEqual)
+        cout << "The arrays are equal.\n";
+    else
+        cout << "The arrays are not equal.\n";
+
+  return 0;
+
+}
