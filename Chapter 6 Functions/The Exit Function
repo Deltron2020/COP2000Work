@@ -1,0 +1,23 @@
+// This program demonstrates how the exit function causes a program to stop executing
+#include <iostream>
+#include <cstdlib> // Needed for the exit function
+using namespace std;
+
+void function();
+
+int main()
+{
+    function();
+    return 0;
+}
+
+// Define the void function
+
+void function()
+{
+    cout << "This program terminates with the exit function!\n";
+    cout << "Bye!\n";
+    exit(0);
+    cout << "This message will never be displayed because\n" 
+         << " the program has already terminated.\n";
+}

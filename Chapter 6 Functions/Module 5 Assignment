@@ -1,0 +1,150 @@
+// this is the Race Results Program for the Module 5 Assignment
+// The user will enter three racing time results and the names of the runners
+// the program will determine if there is a tie or winner and display the winners name(s)
+// as well as the average race time. Tyler Trice 10/29/2019 Module 5 Assignment, COP2000
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Function Prototypes
+void getRaceTimes(string &, double &);
+void findWinner(string, string, string, double, double, double);
+double raceAverage(double, double, double);
+void welcome();
+
+int main()
+{
+  // Declare Variables
+  // Three Racers
+  string racerOne;
+  string racerTwo;
+  string racerThree;
+
+  // Three Times
+  double timeOne;
+  double timeTwo;
+  double timeThree;
+
+  // Average Time
+  double averageTime;
+
+  // Call the Welcome Function
+  welcome();
+
+  // Call getRaceTimes for racer one
+  getRaceTimes(racerOne, timeOne);
+
+  // Call getRaceTimes for racer two
+  getRaceTimes(racerTwo, timeTwo);
+
+  // Call getRaceTimes for racer three
+  getRaceTimes(racerThree, timeThree);
+    
+  // Call the findWinner Function
+  findWinner(racerOne, racerTwo, racerThree, timeOne, timeTwo, timeThree);
+
+  // Call the raceAverage Function
+  averageTime = raceAverage(timeOne, timeTwo, timeThree);
+
+  cout << "\n\nOverall Race Time Average : " << averageTime << endl;
+
+  return 0;
+}
+
+// Define the Welcome Function
+void welcome()
+{
+    // Display the Welcome
+    cout << "*****************************************************************\n"
+         << "Welcome to Race Results Program\n"
+         << "You Are Asked to Enter the Three Racer's Names\n"
+         << "and Their Associated Race Time.\n\n"
+         << "Please Enter a Real Number for Race Time (The Race Time Must Be > 0).\n\n"
+         << "Program Developed by: Tyler Trice\n"
+         << "*****************************************************************\n";
+         
+}
+
+// Define the getRaceTimes Function
+void getRaceTimes(string &firstName, double &firstTime)
+{
+    
+    cout << "\nPlease enter the racer's first name > ";
+    cin >> firstName;
+    cout << "\nPlease enter the racers time > ";
+    cin >> firstTime;
+    while (firstTime <= 0)
+    {
+         cout << "Invalid time input....time must be greater than 0";
+         cout << "\nPlease enter the racers time > ";
+         cin >> firstTime;
+    }
+}
+
+// Define the findWinner Function
+void findWinner(string racer1, string racer2, string racer3, double time1, double time2, double time3)
+{
+  string winner;
+  double bestTime;
+  string tieOne;
+  string tieTwo;
+
+  if (time1 < time2 && time1 < time3)         // if racer 1 wins
+  {
+    bestTime = time1;
+    winner = racer1;
+    cout << "\nCongratulations " << winner << "!!! You are the winner!!\n"
+         << "***** Your winning time is: " << bestTime << " *****";
+  }
+  else if (time2 < time1 && time2 < time3)      // if racer 2 wins
+  {
+    bestTime = time2;
+    winner = racer2;
+    cout << "\nCongratulations " << winner << "!!! You are the winner!!\n"
+         << "***** Your winning time is: " << bestTime << " *****";
+  }
+  else if (time3 < time1 && time3 < time2)    // if racer 3 wins
+  {
+    bestTime = time3;
+    winner = racer3;
+    cout << "\nCongratulations " << winner << "!!! You are the winner!!\n"
+         << "***** Your winning time is: " << bestTime << " *****";
+  }
+  else if (time1 == time2 && time1 < time3)  // if racer 1 and 2 are tied
+  {
+    tieOne = racer1;
+    tieTwo = racer2;
+    bestTime = time1;
+    cout << "\nWe have a TIE "<< tieOne << " and " << tieTwo << " win!!\n"
+         << "***** Your winning time is: " << bestTime << " *****";
+  }
+  else if (time1 == time3 && time1 < time2)   // if racer 1 and 3 are tied
+  {
+    tieOne = racer1;
+    tieTwo = racer3;
+    bestTime = time1;
+    cout << "\nWe have a TIE "<< tieOne << " and " << tieTwo << " win!!\n"
+          << "***** Your winning time is: " << bestTime << " *****";
+  } 
+  else if (time2 == time3 && time2 < time1)   // if racer 2 and 3 are tied
+  {
+    tieOne = racer2;
+    tieTwo = racer3;
+    bestTime = time2;
+    cout << "\nWe have a TIE "<< tieOne << " and " << tieTwo << " win!!\n"
+          << "***** Your winning time is: " << bestTime << " *****";
+  }
+  else if (time1 == time2 && time1 == time3)  // if all racers are tied
+  {
+    cout << "\nWe have a 3 way TIE!! No Winner for this Race....\n";
+  }
+  
+}
+
+//Define raceAverage Function
+double raceAverage(double time1, double time2, double time3)
+{
+  double average;
+  average = ((time1 + time2 + time3) / 3);
+  return average;
+}

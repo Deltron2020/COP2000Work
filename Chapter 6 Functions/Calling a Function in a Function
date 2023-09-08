@@ -1,0 +1,28 @@
+// This program has three function: main, deep, deeper
+#include <iostream>
+using namespace std;
+
+// Define Function deeper
+void deeper()
+{
+    cout << "I am now inside the function deeper.\n";
+}
+
+// Define Function deep
+void deep()
+{
+    cout << "I am now inside the function deep.\n";
+    deeper();
+    cout << "Now I am back in deep.\n";
+}
+
+// Main Function
+
+int main()
+{
+    cout << "I am in the Main Function.\n";
+    deep();
+    cout << "I am back in the Main function.\n";
+    return 0;
+
+}

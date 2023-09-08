@@ -1,0 +1,32 @@
+// This program demonstrates default function arguments
+#include <iostream>
+using namespace std;
+
+// Function Prototype with default arguments
+void displayStars(int = 10, int = 1);
+
+int main()
+{
+    displayStars();
+    cout << endl;
+    displayStars(5);
+    cout << endl;
+    displayStars(10, 8);
+
+    return 0;
+}
+
+
+// Define displayStars function
+
+void displayStars(int cols, int rows)
+{
+    // Nested Loop. The outer Loop controls the rows and
+    // the inner loop controls the the columns.
+    for (int down = 0; down < rows; down++ )
+    {
+        for (int across = 0; across < cols; across++)
+            cout << "*";
+        cout << endl;
+    }
+}

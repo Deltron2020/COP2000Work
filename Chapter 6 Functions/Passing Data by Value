@@ -1,0 +1,33 @@
+// this program demonstrates that changes to a function
+// parameter have no effect on the original argument
+#include <iostream>
+using namespace std;
+
+// Function Prototype
+void changeMe(int);
+
+int main()
+{
+      int number = 12;
+
+      // Display the value in number
+      cout << "Number is " << number << endl;
+
+      // Call changeMe, passing the value in number as the argument
+      changeMe(number);
+
+      // Display the value in number again
+      cout << "Now back in main, the value of "
+           << "number is " << number << endl;
+      return 0;
+
+}
+
+void changeMe(int myValue)
+{
+    // Change the value of myValue to 0.
+    myValue = 0;
+
+    // Display the value in myValue.
+    cout << "Now the value is " << myValue << endl; 
+}
